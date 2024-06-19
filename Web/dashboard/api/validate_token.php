@@ -3,6 +3,7 @@
 // Carregar configurações
 require_once '../../config.php';
 $pdo = connectDB($db);
+
 // Carregar classe
 require_once '../../objects/User.php';
 $user = new User($pdo);

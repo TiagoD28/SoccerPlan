@@ -11,6 +11,7 @@
  *        Array com definição de host, dbname, port, charset, username e password
  * @return PDO Objeto PDO com a ligação à Base de Dados
  */
+
 function connectDB($db) {
     try {
         $pdo = new PDO(
