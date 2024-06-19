@@ -1,0 +1,38 @@
+ - Page Teams:
+    . fix the send code
+    
+
+Things to do:
+• Na página Teams tem lista de membros, ao carregar aparecer uma página
+com a lista de membros com botão de eliminar e adicionar. A lista de
+categorias ao carregar em cada uma delas irá aparecer uma página com
+as estatísticas da equipa, outra vai ter as estatísticas dos jogadores e
+outra página campeonatos que aparece uma lista de equipas adversárias
+onde o treinador poderá eliminar e editar as equipas. Só treinador pode
+editar e eliminar;
+    - StatsTeam: done
+    - StatsPlayers: done
+    - Championship: done
+
+• Fazer página de notificações;
+ - Send Request Club: done
+ - Send Request Team: done
+ - Send Code Club: done
+ - Send Code Team: done
+ - Answer Request Club: done
+ - Answer Request Team: done
+ - Event added: done
+ - Message: to do
+
+ - Acabar a página Profile, mostrar card com os dados da base de dados,
+mostrar estatísticas da equipa, botão de editar perfil e ao carregar botão
+logout na Header Bar aparecer no screen confirmar logout: to do
+
+• Avatar na barra de cima com imagem a receber na base de dados: to do
+
+• Acabar o estilo de alguns componentes de forma a ficar com as cores do
+tema da aplicação;
+
+• No chat, as mensagens do lado esquerdo, inserir avatar;
+
+• Mudar os icons da navegação de baixo;
