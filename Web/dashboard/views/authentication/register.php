@@ -5,15 +5,14 @@
         session_start();
     }
 
-
     if (isset($_SESSION['toast'])) {
         if($_SESSION['toast'] == '400'){
-            toastShow($_SESSION['toast'], 'error');
+            toastShow('Error', $_SESSION['toastMessage'], 'error');
         } else if($_SESSION['toast']){
-            toastShow($_SESSION['toast'], 'success');
+            toastShow('Success', $_SESSION['toastMessage'], 'success');
         }
         unset($_SESSION['toast']);
-        // unset($_SESSION['message']);
+        unset($_SESSION['toastMessage']);
     }
 ?>
 
@@ -31,7 +30,6 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
 
         <!-- External CSS Files -->
         <!-- Scrollable table -->
@@ -43,19 +41,12 @@
         <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
         <link href="../../css/index.css" rel="stylesheet">
 
-
-        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> -->
         <!-- Custom fonts for this template-->
         <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css" rel="stylesheet"> -->
-        
-
         
         <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-
-        <!-- Custom styles for this template-->
         
     </head>
     <body>
@@ -84,51 +75,38 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect01">Type User</label>
                                         </div>
-                                        <select class="custom-select" id="userTypeSelect" name="typeUser">
-                                            <option selected>Choose...</option>
+                                        <select class="custom-select" id="userTypeSelect" name="typeUser" required>
+                                            <option value="">Choose...</option>
                                             <option value="ClubAdmin">Club Administrator</option>
                                             <option value="Employer">Employer</option>
                                         </select>
                                     </div>
 
-                                    
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <input type="text" class="form-control form-control-user" name="firstName" id="exampleFirstName"
-                                                placeholder="First Name">
+                                                placeholder="First Name" required>
                                         </div>
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control form-control-user" name="lastName" id="exampleLastName"
-                                                placeholder="Last Name">
+                                                placeholder="Last Name" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <!-- <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="dateOfBirth"
-                                                placeholder="Date of Birth">
-                                        </div> -->
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control form-control-user" id="username" name="username"
-                                                placeholder="Username">
+                                                placeholder="Username" required>
                                         </div>
-                                        <!-- <div class="col-sm-6">
-                                            <input type="number" class="form-control form-control-user" id="phoneNumber"
-                                                placeholder="Phone Number">
-                                        </div> -->
                                     </div>
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user" name="email" id="exampleInputEmail"
-                                            placeholder="Email Address">
+                                            placeholder="Email Address" required>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" name="password" placeholder="Password">
+                                                id="exampleInputPassword" name="password" placeholder="Password" required>
                                         </div>
-                                        <!-- <div class="col-sm-6">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleRepeatPassword" placeholder="Repeat Password">
-                                        </div> -->
                                     </div>
                                     <button type="submit" name="register" class="my-a-btn btn my-btn-primary btn-user btn-block">
                                         Register

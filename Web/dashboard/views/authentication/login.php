@@ -7,12 +7,12 @@
 
     if (isset($_SESSION['toast'])) {
         if($_SESSION['toast'] == '400'){
-            toastShow($_SESSION['toast'], 'error');
+            toastShow('Error', $_SESSION['toastMessage'], 'error');
         } else if($_SESSION['toast']){
-            toastShow($_SESSION['toast'], 'success');
+            toastShow('Success', $_SESSION['toastMessage'], 'success');
         }
         unset($_SESSION['toast']);
-        // unset($_SESSION['message']);
+        unset($_SESSION['toastMessage']);
     }
 ?>
 
@@ -65,84 +65,53 @@
         <div class="my-div">
             <img class="my-icon" src="../../img/splash.png">
             <h1 class="my-h1">SOCCERPLAN</h1>
-
-            <!-- Toast -->
-            <!-- <div class="toast">
-                <div class="toast-content">
-                    <i class="fas fa-solid fa-check check"></i>
-
-                    <div class="message">
-                        <span class="text text-1">Success</span>
-                        <span class="text text-2">Login Successful</span>
-                    </div>
-                </div>
-                <i class="fa-solid fa-xmark"></i>
-                <div class="progress"></div>
-            </div> -->
-            <!-- End Toast -->
-
         </div>
         <div class="my-container">
-
-    <div class="row justify-content-center">
-    <div class="col-xl-10 col-lg-12 col-md-9">
-
-            <div class="my-register-card o-hidden border-0 my-5">
-                <div class="card-body p-0">
-                    <!-- Nested Row within Card Body -->
-                    <div class="row">
-                        <div class="col-lg-5 d-none d-lg-block my-bg-register">
-                            <div class="my-bg-register-image"></div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="p-5">
-                                <div class="text-center">
-                                    <h1 class="h4 my-text-gray-900 mb-4">Login</h1>
+            <div class="row justify-content-center">
+                <div class="col-xl-10 col-lg-12 col-md-9">
+                    <div class="my-register-card o-hidden border-0 my-5">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div class="row">
+                                <div class="col-lg-5 d-none d-lg-block my-bg-register">
+                                    <div class="my-bg-register-image"></div>
                                 </div>
-                                <form class="user" action="../../api/process/processLogin.php" method="POST">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" 
-                                            id="email" name="email" placeholder="Email">
-                                    </div>
-                                    <!-- <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" 
-                                            id="username" name="username" placeholder="Username">
-                                    </div> -->
-                                    <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" 
-                                            id="password" name="password" placeholder="Password">
-                                    </div>
-                                    <!-- <div class="form-group row">
-                                        <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                                placeholder="Email Address">
+                                <div class="col-lg-7">
+                                    <div class="p-5">
+                                        <div class="text-center">
+                                            <h1 class="h4 my-text-gray-900 mb-4">Login</h1>
                                         </div>
-                                    </div> -->
-                                    <!-- <div class="form-group row">
-                                        <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                        <form class="user" action="../../api/process/processLogin.php" method="POST">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control form-control-user" 
+                                                    id="email" name="email" placeholder="Email">
+                                            </div>
+                                            <!-- <div class="form-group">
+                                                <input type="text" class="form-control form-control-user" 
+                                                    id="username" name="username" placeholder="Username">
+                                            </div> -->
+                                            <div class="form-group">
+                                                <input type="password" class="form-control form-control-user" 
+                                                    id="password" name="password" placeholder="Password">
+                                            </div>
+                                            <button type="submit" class="my-a-btn btn my-btn-primary btn-user btn-block">
+                                                Login
+                                            </button>
+                                            <hr>
+                                        </form>
+                                        <div class="text-center">
+                                            <a class="my-a small" href="forgot-password.html">Forgot Password?</a>
                                         </div>
-                                    </div> -->
-                                    <button type="submit" class="my-a-btn btn my-btn-primary btn-user btn-block">
-                                        Login
-                                    </button>
-                                    <hr>
-                                </form>
-                                <div class="text-center">
-                                    <a class="my-a small" href="forgot-password.html">Forgot Password?</a>
-                                </div>
-                                <div class="text-center">
-                                    <a class="my-a small" href="./register.php">I don't have an account? Login!</a>
+                                        <div class="text-center">
+                                            <a class="my-a small" href="./register.php">I don't have an account? Register!</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-</div>
-</div>
-
         </div>
     </body>
 </html>

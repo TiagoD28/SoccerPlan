@@ -7,6 +7,23 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/* Profile avatar */
+  .avatar-container {
+      width: 100px; /* Adjust the width and height based on your design */
+      height: 100px;
+      overflow: hidden;
+      border-radius: 50%;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+  }
+
+  .avatar-container img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+  }
+/* end avatar */
 
 /* Toast style */
 #overlay {
@@ -28,7 +45,7 @@
   background-color: #fff;
   padding: 20px 35px 20px 25px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  border-left: 6px solid #ff3d43;
+  border-left: 6px solid #fff;
   overflow: hidden;
   transform: translateX(calc(100% + 30px));
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
@@ -50,7 +67,7 @@
   justify-content: center;
   /* height: 35px; */
   /* width: 35px; */
-  background-color: #ff3d43;
+  background-color: gray;
   color: #fff;
   font-size: 20px;
   border-radius: 50%;
@@ -177,6 +194,10 @@ td{
 }
 /* end base.php */
 
+.nav-link.disabled-link{
+  pointer-events: none !important;
+}
+
 .nav-link.my.active{
   color: #f50443 !important;
   font-weight: bold;
@@ -241,12 +262,15 @@ td{
   color: #e3e6f0 !important;
 }
 
-/* a.my-text-primary:hover, a.my-text-primary:focus {
-  color: #f50443 !important;
-} */
-
 .my-secondary-color{
   color: #f50443 !important;
+}
+
+.my-primary-bgColor{
+  background-color: #041b2b !important;
+}
+.my-secondary-bgColor{
+  background-color: #f50443 !important;
 }
 
 .bgColor{
@@ -275,6 +299,13 @@ td{
 /* body{
   background-color: #041b2b;
 } */
+
+.user-img-circle {
+  border-radius: 50% !important;
+  width: 50px !important; /* Adjust the width and height based on your design */
+  height: 50px !important;
+  object-fit: cover !important; /* Preserve aspect ratio while covering the entire container */
+}
 
 /* Register */
 
@@ -335,13 +366,37 @@ td{
 }
 
 .my-btn-primary {
-    color: white;
-    background-color: #041b2b;
+    color: #fff !important;
+    background-color: #041b2b !important;
     border-width: 1;
     border-color: white;
   }
   
 .my-btn-primary:hover {
+    color: #fff !important;
+    background-color: #f50443 !important;
+}
+
+.my-btn-success {
+    color: #fff !important;
+    background-color: #1cc88a !important;
+    border-width: 1;
+    border-color: white;
+  }
+  
+.my-btn-success:hover {
+    color: #fff !important;
+    background-color: #f50443 !important;
+}
+
+.my-btn-error {
+    color: #fff !important;
+    background-color: #e74a3b !important;
+    border-width: 1;
+    border-color: white;
+  }
+  
+.my-btn-error:hover {
     color: #fff !important;
     background-color: #f50443 !important;
 }
@@ -390,9 +445,358 @@ td{
   outline: 0;
 }
 
-
-  
 /* End Register */
+
+/* Segmented Control */
+.segmented-option {
+  text-decoration: none;
+  padding: 8px 16px;
+  margin: 4px;
+  color: #041b2b;
+  background-color: #ffffff;
+  border: 1px solid #041b2b;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.segmented-option:hover {
+  text-decoration: none;
+  padding: 8px 16px;
+  margin: 4px;
+  color: #fff;
+  background-color: #f50443;
+  border: 1px solid #041b2b;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.segmented-option.selected {
+  color: #ffffff;
+  background-color: #f50443;
+}
+
+/* timeline */
+
+/* Styles for the fixed button */
+.fixed-button-container {
+  position: fixed;
+  bottom: 95px; /* Adjust the top distance as needed */
+  right: 20px; /* Adjust the right distance as needed */
+  z-index: 1000; /* Ensure the button is above other elements */
+}
+
+.event-section {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.timeline {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: relative
+}
+
+.timeline:before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  width: 5px;
+  background: #2d353c;
+  left: 20%;
+  margin-left: -2.5px
+}
+
+.timeline>li {
+  position: relative;
+  min-height: 10px;
+  padding: 20px 0
+}
+
+/* todays event */
+
+.timeline li.today-event {
+  /* Styles for today's event */
+  border: 2px solid #041b2b; /* Darker red border for emphasis */
+  border-radius: 0.7em;
+  background-color: #041b2b; /* Lighter red background color for emphasis */
+  box-shadow: 0 0 10px rgba(31, 50, 67, 0.5); /* Box shadow for added emphasis */
+  padding: 20px; /* Larger padding for emphasis */
+  margin-bottom: 20px; /* Larger margin for separation */
+}
+
+.timeline li.today-event .timeline-time {
+  /* Styles for today's event timeline time */
+  background-color: #f50443; /* Darker red background color for emphasis */
+  color: #fff; /* White text color for contrast */
+  height: 30px;
+  margin-top: 10px;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+}
+
+.timeline li.today-event .timeline-time .date {
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 30px; /* Adjust this value to match the height of the container */
+  margin-top: 0px; 
+  margin-right: 10px;
+}
+
+.timeline li.today-event .timeline-icon a {
+  /* Styles for today's event timeline icon */
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  border-radius: 20px;
+  background-color: #d9e0e7; /* Darker red background color for emphasis */
+  border: 5px solid #f50443;
+}
+
+.timeline li.today-event .timeline-body {
+  /* Styles for today's event timeline body */
+  background-color: #1f3243; /* Lighter red background color for emphasis */
+  color: #fff;
+  margin-top: 20px;
+}
+
+.timeline li.today-event .timeline-content {
+  /* Styles for today's event timeline content */
+  color: #fff; /* Darker text color for emphasis */
+}
+
+li.today-event .timeline-header .username,
+li.today-event .timeline-header .username a {
+  color: #fff;
+}
+
+/* end todays event */
+
+
+.timeline .timeline-time {
+  position: absolute;
+  left: 0;
+  width: 18%;
+  text-align: right;
+  top: 30px
+}
+
+.timeline .timeline-time .date,
+.timeline .timeline-time .time {
+  display: block;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.timeline .timeline-time .date {
+  line-height: 16px;
+  font-size: 12px
+}
+
+.timeline .timeline-time .date-title {
+  display: block;
+  font-weight: 800;
+  margin-top: 15px;
+  line-height: 18px;
+  font-size: 20px;
+  color: #f50443;
+}
+
+.timeline .timeline-time .time {
+  line-height: 24px;
+  font-size: 20px;
+  color: #242a30;
+}
+
+.timeline .timeline-icon {
+  left: 15%;
+  position: absolute;
+  width: 10%;
+  text-align: center;
+  top: 40px
+}
+
+.timeline .timeline-icon a {
+  text-decoration: none;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  border-radius: 20px;
+  background: #d9e0e7;
+  line-height: 10px;
+  color: #fff;
+  font-size: 14px;
+  border: 5px solid #2d353c;
+  transition: border-color .2s linear
+}
+
+.timeline .timeline-body {
+  margin-left: 23%;
+  margin-right: 17%;
+  background: #fff;
+  position: relative;
+  padding: 20px 25px;
+  border-radius: 6px
+}
+
+/* .timeline .timeline-body:before {
+  content: '';
+  display: block;
+  position: absolute;
+  border: 10px solid transparent;
+  border-right-color: #fff;
+  left: -20px;
+  top: 20px
+} */
+
+.timeline .timeline-body>div+div {
+  margin-top: 15px
+}
+
+.timeline .timeline-body>div+div:last-child {
+  margin-bottom: -20px;
+  padding-bottom: 20px;
+  border-radius: 0 0 6px 6px
+}
+
+.timeline-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e7eb;
+  line-height: 30px
+}
+
+/* .timeline-header-main {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e7eb;
+  line-height: 30px
+} */
+
+.timeline-header .userimage {
+  float: left;
+  width: 34px;
+  height: 34px;
+  border-radius: 40px;
+  overflow: hidden;
+  margin: -2px 10px -2px 0
+}
+
+.timeline-header .username {
+  font-size: 16px;
+  font-weight: 600
+}
+
+.timeline-header .username,
+.timeline-header .username a {
+  color: #2d353c
+}
+
+.timeline img {
+  max-width: 100%;
+  display: block
+}
+
+.timeline-content {
+  letter-spacing: .25px;
+  line-height: 18px;
+  font-size: 13px
+}
+
+.timeline-content:after,
+.timeline-content:before {
+  content: '';
+  display: table;
+  clear: both
+}
+
+.timeline-title {
+  margin-top: 0
+}
+
+.timeline-footer {
+  background: #fff;
+  border-top: 1px solid #e2e7ec;
+  padding-top: 15px
+}
+
+.timeline-footer a:not(.btn) {
+  color: #575d63
+}
+
+.timeline-footer a:not(.btn):focus,
+.timeline-footer a:not(.btn):hover {
+  color: #2d353c
+}
+
+.timeline-likes {
+  color: #6d767f;
+  font-weight: 600;
+  font-size: 12px
+}
+
+.timeline-likes .stats-right {
+  float: right
+}
+
+.timeline-likes .stats-total {
+  display: inline-block;
+  line-height: 20px
+}
+
+.timeline-likes .stats-icon {
+  float: left;
+  margin-right: 5px;
+  font-size: 9px
+}
+
+.timeline-likes .stats-icon+.stats-icon {
+  margin-left: -2px
+}
+
+.timeline-likes .stats-text {
+  line-height: 20px
+}
+
+.timeline-likes .stats-text+.stats-text {
+  margin-left: 15px
+}
+
+.timeline-comment-box {
+  background: #f2f3f4;
+  margin-left: -25px;
+  margin-right: -25px;
+  padding: 20px 25px
+}
+
+.timeline-comment-box .user {
+  float: left;
+  width: 34px;
+  height: 34px;
+  overflow: hidden;
+  border-radius: 30px
+}
+
+.timeline-comment-box .user img {
+  max-width: 100%;
+  max-height: 100%
+}
+
+.timeline-comment-box .user+.input {
+  margin-left: 44px
+}
+
+.lead {
+  margin-bottom: 20px;
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.text-danger, .text-red {
+  color: #ff5b57!important;
+}
+/* end timeline */
+
 
 /* .my-btn-primary:focus, .my-btn-primary.focus {
     color: #fff;

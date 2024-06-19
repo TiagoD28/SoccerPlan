@@ -8,10 +8,7 @@
 
     $idClub = $_GET['idClub'];
     $idUser = $_GET['idUser'];
-
-    // echo $idClub;
-    // echo $idUser;
-
+    
     $data = [
         "idClub" => $idClub,
         "idUser" => $idUser
@@ -24,10 +21,7 @@
     if($decodedApiResponse['status'] == '400'){
         echo $decodedApiResponse['message'];
     } else {
-        // echo $decodedApiResponse['message'];
         header("Location: ../views/adminClub/base.php");
     }
-    // Decode the JSON response
-    // $decodedResponse = json_decode($apiResponse, true);
 
 ?>

@@ -28,8 +28,8 @@
     $apiResponse = sendDataToApi($route, $data);
     $decodedResponse = json_decode($apiResponse, true);
     echo $decodedResponse['status'];
-    $_SESSION['toast'] = '400';
     $_SESSION['toastMessage'] = $decodedResponse['message'];
+
     switch ($decodedResponse['status']) {
         case '400-1':
             $_SESSION['toast'] = '400';
@@ -60,7 +60,7 @@
             header('Location: ../../views/authentication/register.php');
             break;
         default:
-            $_SESSION['toast'] = $_SESSION['status'];
+            $_SESSION['toast'] = '200';
             header('Location: ../../views/authentication/login.php');
             break;
     }

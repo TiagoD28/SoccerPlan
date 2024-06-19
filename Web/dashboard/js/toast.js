@@ -1,7 +1,8 @@
-function showToast(message, type) {
+function showToast(title, message, type) {
 
   document.querySelector('#overlay').style.visibility = 'visible';
 
+  document.querySelector('#title').innerHTML = title;
   document.querySelector('#textMessage').innerHTML = message;
 
   let toast = document.querySelector('#toast');

@@ -1,5 +1,6 @@
 <?php
-    require_once '../../api/requests/apiConfig.php';
+
+require_once '../../api/requests/apiConfig.php';
     // require_once '../api/requests/apiConfig.php';
 
     function getDataFromApi($route){
@@ -7,12 +8,22 @@
 
         $apiUrl = $apiBaseUrl . $route;
 
-        // Make a GET request to the API
-        $apiResponse = file_get_contents($apiUrl);
+        // Initialize cURL session
+        $ch = curl_init($apiUrl);
+
+        // Set cURL options
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
+        // Execute cURL session and get the response
+        $apiResponse = curl_exec($ch);
+
+        // Close cURL session
+        curl_close($ch);
 
         // Decode JSON response
         $responseData = json_decode($apiResponse, true);
-        // echo $apiUrl.'<br>';
 
         // Check if the decoding was successful
         if ($responseData !== null) {

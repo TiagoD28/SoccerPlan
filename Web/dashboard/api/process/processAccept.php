@@ -21,24 +21,23 @@
     
         $apiResponse = sendDataToApi($route, $data);
         $decodedResponse = json_decode($apiResponse, true);
-        // echo $decodedResponse['status'];
     
         $_SESSION['status'] = $decodedResponse['status'];
         $_SESSION['message'] = $decodedResponse['message'];
         $_SESSION['toastMessage'] = $_SESSION['message'];
-        // $_SESSION['toast'] = '400';
+        
         switch ($decodedResponse['status']) {
             case '400':
                 $_SESSION['toast'] = '400';
-                header('Location: ../../views/adminClub/base.php?route=requestsClub');
+                header('Location: ../../views/adminClub/base.php?route=requests');
                 break;
             case '400':
                 $_SESSION['toast'] = '400';
-                header('Location: ../../views/adminClub/base.php?route=requestsClub');
+                header('Location: ../../views/adminClub/base.php?route=requests');
                 break;
             default:
                 $_SESSION['toast'] = '200';
-                header('Location: ../../views/adminClub/base.php?route=requestsClub');
+                header('Location: ../../views/adminClub/base.php?route=requests');
                 break;
         }
 
@@ -64,22 +63,22 @@
     
         $_SESSION['status'] = $decodedResponse['status'];
         $_SESSION['message'] = $decodedResponse['message'];
-        // $_SESSION['toast'] = '400';
+        
         switch ($decodedResponse['status']) {
             case '400':
                 $_SESSION['toast'] = '400';
                 $_SESSION['toastMessage'] = $_SESSION['message'];
-                header('Location: ../../views/adminClub/base.php?route=requestsClub');
+                header('Location: ../../views/adminClub/base.php?route=requests');
                 break;
             case '400':
                 $_SESSION['toast'] = '400';
                 $_SESSION['toastMessage'] = $_SESSION['message'];
-                header('Location: ../../views/adminClub/base.php?route=requestsClub');
+                header('Location: ../../views/adminClub/base.php?route=requests');
                 break;
             default:
                 $_SESSION['toast'] = '200';
                 $_SESSION['toastMessage'] = $_SESSION['message'];
-                header('Location: ../../views/adminClub/base.php?route=requestsClub');
+                header('Location: ../../views/adminClub/base.php?route=requests');
                 break;
         }
 

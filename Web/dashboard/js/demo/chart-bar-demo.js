@@ -27,18 +27,23 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
+var idClub = document.querySelector('script[src$="chart-bar-demo.js"]').getAttribute('data-id-club');
+
+// Now you can use idClub in your JavaScript code
+console.log(idClub);
+
 // Bar Chart Example
 var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: [], // Initialize with an empty array
     datasets: [{
       label: "Revenue",
-      backgroundColor: "#4e73df",
-      hoverBackgroundColor: "#2e59d9",
+      backgroundColor: "#f50443",
+      hoverBackgroundColor: "#e4003d",
       borderColor: "#4e73df",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [],
     }],
   },
   options: {
@@ -48,45 +53,47 @@ var myBarChart = new Chart(ctx, {
         left: 10,
         right: 25,
         top: 25,
-        bottom: 0
-      }
+        bottom: 0,
+      },
     },
     scales: {
-      xAxes: [{
+      x: {
         time: {
-          unit: 'month'
+          unit: 'month',
         },
-        gridLines: {
+        grid: {
           display: false,
-          drawBorder: false
+          drawBorder: false,
         },
         ticks: {
-          maxTicksLimit: 6
+          maxTicksLimit: 6,
         },
         maxBarThickness: 25,
-      }],
-      yAxes: [{
+      },
+      y: {
+        beginAtZero: true,
         ticks: {
           min: 0,
-          max: 15000,
+          max: 100,
           maxTicksLimit: 5,
+          stepSize: 0,
+          precision: 0,
           padding: 10,
-          // Include a dollar sign in the ticks
-          callback: function(value, index, values) {
-            return '$' + number_format(value);
-          }
+          callback: function (value, index, values) {
+            return '' + number_format(value, 0);
+          },
         },
-        gridLines: {
-          color: "rgb(234, 236, 244)",
-          zeroLineColor: "rgb(234, 236, 244)",
+        grid: {
+          color: 'rgb(234, 236, 244)',
+          zeroLineColor: 'rgb(234, 236, 244)',
           drawBorder: false,
           borderDash: [2],
-          zeroLineBorderDash: [2]
-        }
-      }],
+          zeroLineBorderDash: [2],
+        },
+      },
     },
     legend: {
-      display: false
+      display: false,
     },
     tooltips: {
       titleMarginBottom: 10,
@@ -102,10 +109,51 @@ var myBarChart = new Chart(ctx, {
       caretPadding: 10,
       callbacks: {
         label: function(tooltipItem, chart) {
-          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return 'Points: ' + number_format(tooltipItem.yLabel, 0);
         }
       }
     },
   }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Construct the URL with the idClub parameter
+  const apiUrl = 'https://esan-tesp-ds-paw.web.ua.pt/tesp-ds-g30/SoccerPlan/api/Teams/index.php';
+  const url = new URL(apiUrl);
+  url.searchParams.append('route', 'getTeamsPoints');
+  url.searchParams.append('idClub', idClub);
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ idClub: idClub }),
+  })
+    .then(response => response.json())
+    .then(response => {
+      const data = response.data;
+
+      console.log(data);
+      if (Array.isArray(data)) {
+        // Filter out null entries and map teams and points
+        const validData = data.filter(entry => entry !== null);
+        const teams = validData.map(entry => entry.nameTeam);
+        const points = validData.map(entry => parseInt(entry.points));
+
+        // Log teams and points
+        console.log('Teams:', teams);
+        console.log('Points:', points);
+
+        // Update myBarChart data
+        myBarChart.data.labels = teams;
+        myBarChart.data.datasets[0].data = points;
+
+        // Update the chart
+        myBarChart.update();
+      } else {
+        console.error('Error: Data is not an array');
+      }
+    })
+    .catch(error => console.error('Error fetching data:', error));
 });

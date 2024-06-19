@@ -9,7 +9,6 @@ import { ThemeProvider } from './components/Context/ThemeContext';
 import {UserProvider, UserConsumer } from './components/Context/UserContext';
 import { RefreshProvider } from './components/Context/RefreshContext';
 import { MessageProvider } from './components/Context/MessageContext';
-// import { EventsProvider } from './components/Context/EventsContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Message } from 'react-native-gifted-chat';
 import { TeamProvider } from './components/Context/TeamContext';
@@ -18,7 +17,6 @@ import { TeamProvider } from './components/Context/TeamContext';
 export default function App(){
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
-  // const { isLogged, setLoggedUser } = useUser();
   const [typeUser, setTypeUser] = useState(null);
 
   const handleLoadingComplete = () => {
@@ -44,14 +42,9 @@ export default function App(){
 
         console.log('User data from storage', userDataFromStorage);
       }
-      // console.log("data from storage: ", userDataFromStorage);
     };
     checkUserLogin();
   }, []);
-
-  
-
-  // console.log('App isLogeed: ', isLogged);
 
   return(
     <>
@@ -59,43 +52,29 @@ export default function App(){
       <UserProvider>
         <RefreshProvider>
           <TeamProvider>
-          {/* <MessageProvider> */}
-          {/* <EventsProvider> */}
             {!loadingComplete ? (
               <Splash onLoaded={handleLoadingComplete} />
             ) : (
               !isLogged ? (
                 <>
                   <RoutesAuthentication onLogged={handleLogged} />
-                  {/* <RoutesAuthentication /> */}
                   <Toast config={ToastConfig} ref={(ref) => Toast.setRef(ref)} />
-                  {/* <ToastComponent /> */}
                 </>
               ) : (
                 <>
-                  {/* {(userData.typeUser === 'Coach' || userData.typeUser === 'Admin') ? ( */}
                   {(typeUser === 'Coach' || typeUser === 'Admin') ? (
                     <>
-                      {/* <CoachRoutes userData={userData} /> */}
                       <CoachRoutes setIsLogged={setIsLogged}/>
-                      {/* <Settings onLogout={handleLogout} /> */}
-                      {/* <Toast config={ToastConfig} ref={(ref) => Toast.setRef(ref)} /> */}
                     </>
                   ) : (
                     <>
-                      {/* <PlayerRoutes userData={userData} /> */}
                       <PlayerRoutes setIsLogged={setIsLogged}/>
-                      {/* <CoachRoutes /> */}
-                      {/* <Toast config={ToastConfig} ref={(ref) => Toast.setRef(ref)} /> */}
                     </>
                   )}
-                  {/* <ToastComponent /> */}
                   <Toast config={ToastConfig} ref={(ref) => Toast.setRef(ref)} />
                 </>
               )
             )}
-            {/* </EventsProvider> */}
-            {/* </MessageProvider> */}
             </TeamProvider>
           </RefreshProvider>
         </UserProvider>

@@ -14,7 +14,7 @@
         </svg>
 
         <div class="message">
-            <span class="text text-1">Warn</span>
+            <span id="title" class="text text-1"></span>
             <span id="textMessage" class="text"></span>
         </div>
 
@@ -28,9 +28,9 @@
 </div>
 
 
-<?php function toastShow($message, $type)
+<?php function toastShow($title, $message, $type)
 {
     if (isset($message)) {
-        echo "<script> showToast('$message', '$type') </script>";
+        echo "<script> showToast('$title', '$message', '$type') </script>";
     }
 }

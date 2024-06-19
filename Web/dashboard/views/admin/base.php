@@ -3,17 +3,9 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-// require_once '../../api/verifyLogin.php';
 
 //Get the current URI
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-
-// $_SESSION['rota'] = $_GET['rota'] ?? 'inicio';
-
-
-// Debugging lines
-// echo 'URL rota: ' . ($_GET['rota'] ?? 'not set') . '<br>';
-// echo 'Session rota: ' . ($_SESSION['rota'] ?? 'not set') . '<br>';
 
 if (isset($_GET['route'])) {
     $_SESSION['route'] = $_GET['route'];
@@ -71,13 +63,9 @@ if (isset($_GET['route'])) {
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="base.php?route=dashboard">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <!-- <i src="../../img/splash.png"></i> -->
-                    <!-- <i src="../../img/splash.png"></i> -->
                     <img src="../../img/splash.png" class="my-logo">
-                    <!-- <img src="../../img/splash.png"> -->
                 </div>
                 <div class="sidebar-brand-text mx-3">SoccerPlan</div>
-                <!-- <i class="fas fa-camera-retro"></i> fa-camera-retro -->
             </a>
 
             <!-- Divider -->
@@ -171,20 +159,6 @@ if (isset($_GET['route'])) {
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
-                    <!-- Topbar Search -->
-                    <!-- <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -358,7 +332,6 @@ if (isset($_GET['route'])) {
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <!-- <a class="dropdown-item" href="../api/logout.php" data-toggle="modal" data-target="#logoutModal"> -->
                                 <a class="dropdown-item" href="../../api/logout.php">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
@@ -381,7 +354,6 @@ if (isset($_GET['route'])) {
                     <?php include '../../routes.php' ?>
 
                 </div>
-                <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->

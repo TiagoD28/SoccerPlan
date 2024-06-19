@@ -1,0 +1,67 @@
+Task list: 
+
+  - Last things to do:
+    - 
+    - create notification when code is generated and apresent
+    
+  Think better if its for only web:
+    - separate the codes used of the not used OR disable the buttons on buttons already used
+    - requests the same logic below  
+
+
+  - Page Club (Employer)
+    . make the sendRequest and the send code: to do
+  - Page Club:
+    . apresent a button to add users to the club: to do
+    . complete the section cards
+    . make a chart with values of database (based on points of each team)
+
+  - Page Requests:
+    . make button reject request: done
+    . only admin club can accept employers
+    
+  - Page Codes:
+    . get codes for teams and clubs: DONE
+    . set only delete in actions(delete code): DONE
+    . when display values of cell, in used must display false or true: to do
+    . instead of display id -> Name: to do
+
+  - Page Calendar:
+    . get events of the club: done
+    . insert timeline with data of database: to do 
+    . display the events in timeline: to do
+    . create events: to do
+
+
+(IMPORTANT: TO GET THE CONSTRAINT IN SQL DO THIS -> SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE TABLE_NAME = 'Players' AND COLUMN_NAME = 'idTeam';)
+- Set all the foreign keys to (delete cascade) or (ON DELETE SET NULL)
+
+-- SELECT CONSTRAINT_NAME 
+-- FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
+-- WHERE TABLE_NAME = 'RequestsToClub' 
+-- 	AND COLUMN_NAME = 'idClub';
+
+-- ALTER TABLE RequestsToClub
+-- DROP FOREIGN KEY RequestsToClub_ibfk_2;
+
+ALTER TABLE RequestsToClub
+ADD CONSTRAINT RequestsToClub_ibfk_2
+FOREIGN KEY (idClub) REFERENCES Clubs(idClub) ON DELETE CASCADE;
+
+CONSTRAINTs: Misses(Notifications)
+- Player: all done
+- Coaches: all done
+- Employers: all done
+- ClubAdmins: all done
+- ChatMessages: all done
+- ClubsCodes: all done
+- Championships: all done
+- TeamsCodes: all done
+- Events: all done
+- Games: all done
+- Practices: all done
+- RequestsToClub: all done
+- RequestsToTeam: all done
+- Stadiums: all done
+- StatisticsT: all done
+- StatisticsP: all done
